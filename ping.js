@@ -20,7 +20,8 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-var net = require('net');
+var net = require('react-native-tcp');
+process.hrtime = require('browser-process-hrtime');
 
 var ping = function(options, callback) {
     var i = 0;
