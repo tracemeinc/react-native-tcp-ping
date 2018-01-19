@@ -21,6 +21,7 @@
 //SOFTWARE.
 
 var net = require('react-native-tcp');
+var promisify = require('es6-promisify');
 process.hrtime = require('browser-process-hrtime');
 
 var ping = function(options, callback) {
@@ -84,9 +85,9 @@ var ping = function(options, callback) {
     connect(options, callback);
 };
 
-module.exports.ping = ping;
+module.exports.ping = promisify(ping);
 
-module.exports.probe = function(address, port, callback) {
+var probe = function(address, port, callback) {
     address = address || 'localhost';
     port = port || 80;
     ping({ address: address, port: port, attempts: 1, timeout: 5000 }, function(err, data) {
@@ -94,3 +95,5 @@ module.exports.probe = function(address, port, callback) {
         callback(err, available);
     });
 };
+
+module.exports.probe = promisify(probe);
