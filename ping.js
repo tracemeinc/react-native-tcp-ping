@@ -90,7 +90,7 @@ module.exports.ping = promisify(ping);
 var probe = function(address, port, callback) {
     address = address || 'localhost';
     port = port || 80;
-    ping({ address: address, port: port, attempts: 1, timeout: 5000 }, function(err, data) {
+    ping({ address: address, port: port, attempts: 1, timeout: 1000 }, function(err, data) {
         var available = data.min !== undefined;
         callback(err, available);
     });
