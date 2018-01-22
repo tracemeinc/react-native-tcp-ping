@@ -17,7 +17,7 @@ npm install tcp-ping
 
 ###Functions
 
-#####ping(options, callback)
+#####ping(options)
 
 ```options``` is an object, which may contain several properties:
 
@@ -26,9 +26,7 @@ npm install tcp-ping
 * timeout (in ms; defaults to 5s)
 * attempts (how many times to measure time; defaults to 10)
 
-```callback``` should be a function with arguments in node convention - ```function(err, data)```.
-
-Returned data is an object which looks like this:
+Returns a promise that resolves with an object which looks like this:
 ```javascript
 {
   address: '46.28.246.123',
@@ -47,19 +45,14 @@ Returned data is an object which looks like this:
 }
 ```
 
-#####probe(address, port, callback)
-```callback``` is a node style callback ```function(err, data)```, where data is true if the server is available and false otherwise.
+#####probe(address, port)
 
 ###Usage
 
 ```javascript
-var tcpp = require('tcp-ping');
+var tcpp = require('react-native-tcp-ping');
 
-tcpp.probe('46.28.246.123', 80, function(err, available) {
-    console.log(available);
-});
+const available = await tcpp.probe('46.28.246.123', 80)
 
-tcpp.ping({ address: '46.28.246.123' }, function(err, data) {
-    console.log(data);
-});
+const data = await tcpp.ping({ address: '46.28.246.123' })
 ```
