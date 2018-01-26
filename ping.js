@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 var net = require('react-native-tcp');
-var promisify = require('es6-promisify');
+var promisify = require('promisify-es6');
 process.hrtime = require('browser-process-hrtime');
 
 var ping = function(options, callback) {

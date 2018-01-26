@@ -21,10 +21,6 @@ buffer@^5.0.0:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
 
-"es6-promisify@git://github.com/digitaldesignlabs/es6-promisify#0de94e0":
-  version "6.0.0"
-  resolved "git://github.com/digitaldesignlabs/es6-promisify#0de94e02cc502364e57e3797828a1381ecba2119"
-
 events@^1.0.2:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
@@ -44,6 +40,10 @@ ip-regex@^1.0.3:
 process@^0.11.9:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
+
+promisify-es6@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/promisify-es6/-/promisify-es6-1.0.3.tgz#b012668c4df3c965ce13daac2b3a4d1726a96346"
 
 react-native-tcp@^3.3.0:
   version "3.3.0"

@@ -24,7 +24,7 @@
   "homepage": "https://github.com/wesolyromek/tcp-ping",
   "dependencies": {
     "browser-process-hrtime": "^0.1.2",
-    "es6-promisify": "git://github.com/digitaldesignlabs/es6-promisify#0de94e0",
+    "promisify-es6": "^1.0.3",
     "react-native-tcp": "^3.3.0"
   },
   "peerDependencies": {
