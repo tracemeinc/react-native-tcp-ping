@@ -31,27 +31,34 @@ var ping = function(options, callback) {
     options.port = options.port || 80;
     options.attempts = options.attempts || 10;
     options.timeout = options.timeout || 5000;
+
+    // use an item higher than the timeout for the values which are empty due
+    // to timeout. It's only fair to include some sort of max value in the
+    // averages / maxes however note that this would skew the actual average
+    // down if that's what you were actually looking for.
+    var timeoutPlusOne = options.timeout + 1;
+
     var check = function(options, callback) {
         if(i < options.attempts) {
             connect(options, callback);
         } else {
             var avg = results.reduce(function(prev, curr) {
-                return prev + curr.time;
+                return prev + (curr.time || timeoutPlusOne);
             }, 0);
             var max = results.reduce(function(prev, curr) {
-                return (prev > curr.time) ? prev : curr.time;
+                return (prev > (curr.time || timeoutPlusOne)) ? prev : curr.time;
             }, results[0].time);
             var min = results.reduce(function(prev, curr) {
-                return (prev < curr.time) ? prev : curr.time;
+                return (prev < (curr.time || timeoutPlusOne)) ? prev : curr.time;
             }, results[0].time);
             avg = avg / results.length;
             var out = {
                 address: options.address,
                 port: options.port,
                 attempts: options.attempts,
-                avg: avg,
-                max: max,
-                min: min,
+                avg: (avg || timeoutPlusOne).toFixed(3),
+                max: (max || timeoutPlusOne).toFixed(3),
+                min: (min || timeoutPlusOne).toFixed(3),
                 results: results
             };
             callback(undefined, out);
