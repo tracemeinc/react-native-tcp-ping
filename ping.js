@@ -53,9 +53,9 @@ var ping = function(options, callback) {
                     address: options.address,
                     port: options.port,
                     attempts: options.attempts,
-                    avg: avg.toFixed(3),
-                    max: max.toFixed(3),
-                    min: min.toFixed(3),
+                    avg: Number(avg.toFixed(3)),
+                    max: Number(max.toFixed(3)),
+                    min: Number(min.toFixed(3)),
                     results: results
                 };
                 resolve(out);
